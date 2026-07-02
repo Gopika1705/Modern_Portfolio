@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
+
+html,
+body {
+  background: #05070d;
+  color: #eef2f8;
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.25);
+}
+
+/* Animated background grid */
+.bg-grid {
+  position: fixed;
+  inset: -2px;
+  z-index: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(120, 160, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 160, 255, 0.055) 1px, transparent 1px);
+  background-size: 46px 46px;
+  -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, black 40%, transparent 95%);
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, black 40%, transparent 95%);
+}
+
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(90px);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.32;
+}
+
+/* Rotating conic-gradient ring trick used for animated card borders */
+.node-card-border::before {
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    var(--accent) 40deg,
+    transparent 90deg,
+    transparent 270deg,
+    var(--accent) 320deg,
+    transparent 360deg
+  );
+  opacity: 0.55;
+  z-index: 0;
+  animation: spin 5.5s linear infinite;
+}
+.node-card-border:hover::before {
+  opacity: 1;
+  animation-duration: 2.6s;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.node-card-border::after {
+  content: "";
+  position: absolute;
+  inset: 1.6px;
+  border-radius: inherit;
+  background: #0b1120;
+  z-index: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001s !important;
+    animation-iteration-count: 1 !important;
+  }
+}
