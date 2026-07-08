@@ -1,7 +1,3 @@
-// ============================================================================
-// All site content lives here. Edit these objects to update the portfolio —
-// no need to touch any component code.
-// ============================================================================
 
 export const profile = {
   name: "Gopika J",
@@ -16,9 +12,6 @@ export const profile = {
   resumeUrl: "/resume.pdf", 
 };
 
-// Each entry below corresponds to one clickable node on the dashboard.
-// `id` must be unique — it's used to open the matching detail panel.
-// `accent` is a Tailwind color token from the accent palette in tailwind.config.js.
 export const sections = [
   {
     id: "projects",
